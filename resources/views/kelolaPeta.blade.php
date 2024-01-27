@@ -71,13 +71,20 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach($allData as $key => $artikel)
+                            @foreach($allData as $key => $map)
                           <tr>
                             <th scope="row">{{ $key + 1 }}</th>
-                            <td>{{ $artikel["nama"] }}</td>
-                            <td>{{ $artikel["koordinat"] }}</td>
+                            <td>{{ $map["nama"] }}</td>
+                            <td>{{ $map["koordinat"] }}</td>
                             <td>
-
+                                <div style="display: flex;flex-direction:row">
+                                    <a href="/editMap/{{ $map['id'] }}" type="button" class="btn btn-warning">Edit</a>
+                                    <!-- Button trigger modal -->
+                                    <form action="/deleteMap/{{ $map['id'] }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
                             </td>
                           </tr>
                           @endforeach

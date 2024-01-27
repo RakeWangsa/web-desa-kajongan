@@ -84,4 +84,11 @@ class ArtikelSettings extends Controller
             "allData" => $allData
         ]);
     }
+
+    public function editMap($id){
+        $all_artikel = Peta::where('id',$id)->first();
+        return view("editMap",[
+            "all_artikel" => $all_artikel
+        ]);
+    }
 }

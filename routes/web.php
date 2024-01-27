@@ -38,6 +38,7 @@ Route::get("/olahartikel",[ArtikelSettings::class, 'olahArtikel'])->middleware('
 Route::get("/kelolapeta",[ArtikelSettings::class, 'kelolaPeta'])->middleware('auth');
 Route::get("/showEditArt/{id}",[ArtikelSettings::class, 'showEditArt'])->middleware('auth');
 Route::put("/editArtikel/{id}",[ArtikelSettings::class, 'editArtikel'])->middleware('auth');
+Route::get("/editMap/{id}",[ArtikelSettings::class, 'editMap'])->middleware('auth');
 
 Route::get("/help",function(){
     return view("help");
