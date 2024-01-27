@@ -514,54 +514,41 @@
                 attribution: '© OpenStreetMap contributors'
             }).addTo(map);
     
+            // Membuat ikon kustom merah
+            var redIcon = new L.Icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            });
+    
             // koordinat kantor
             var kantorCoords1 = [-7.054084729493203, 109.58489727588355]; //koordinat farmtech
             var kantorCoords2 = [-7.05683747400653, 109.58692027784949]; //koordinat farmhill
             var kantorCoords3 = [-7.05783747400653, 109.59692027784949]; //koordinat tes
     
             // Marker untuk Farmtech
-            var markerFarmtech = L.marker(kantorCoords1).addTo(map);
-            markerFarmtech.bindPopup('Farmtech').openPopup();
+            var markerFarmtech = L.marker(kantorCoords1, { icon: redIcon }).addTo(map);
+            markerFarmtech.bindPopup('Farmtech', { autoClose: false }).openPopup();
     
             // Marker untuk Farmhill
-            var markerFarmhill = L.marker(kantorCoords2).addTo(map);
-            markerFarmhill.bindPopup('Farmhill').openPopup();
-                
+            var markerFarmhill = L.marker(kantorCoords2, { icon: redIcon }).addTo(map);
+            markerFarmhill.bindPopup('Farmhill', { autoClose: false }).openPopup();
+    
             // Marker untuk Farmhill
-            var markerTes = L.marker(kantorCoords3).addTo(map);
-            markerTes.bindPopup('Tes').openPopup();
-    
-            // Custom popups with text above markers
-            var popupFarmtech = L.popup({
-                closeButton: false,
-                autoClose: false,
-                closeOnClick: false,
-                offset: L.point(0, -30) // Adjust the offset to position text above the marker
-            }).setContent("Farmtech");
-    
-            var popupFarmhill = L.popup({
-                closeButton: false,
-                autoClose: false,
-                closeOnClick: false,
-                offset: L.point(0, -30) // Adjust the offset to position text above the marker
-            }).setContent("Farmhill");
-    
-            var popupTes = L.popup({
-                closeButton: false,
-                autoClose: false,
-                closeOnClick: false,
-                offset: L.point(0, -30) // Adjust the offset to position text above the marker
-            }).setContent("Tes");
-
-            // Bind the custom popups to the markers
-            markerFarmtech.bindPopup(popupFarmtech);
-            markerFarmhill.bindPopup(popupFarmhill);
-            markerTes.bindPopup(popupTes);
+            var markerTes = L.marker(kantorCoords3, { icon: redIcon }).addTo(map);
+            markerTes.bindPopup('Tes', { autoClose: false }).openPopup();
         }
     
         // Panggil fungsi saat halaman dimuat
         window.onload = tampilkanPosisi;
     </script>
+    
+    
+    
+    
     
 </body>
 
