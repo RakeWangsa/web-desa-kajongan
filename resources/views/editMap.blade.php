@@ -43,18 +43,18 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="row mt-3">
                 <div class="col-lg-10">
-                    <h4>Edit Map <b><u>{{ $all_artikel['nama'] }}</u></b></h4>
-                    <form action="/editArtikel/{{ $all_artikel['id'] }}" method="POST" enctype="multipart/form-data">
+                    <h4>Edit Map <b><u>{{ $all_peta['nama'] }}</u></b></h4>
+                    <form action="/editMapSubmit/{{ $all_peta['id'] }}" method="POST" enctype="multipart/form-data">
                         @include('sweetalert::alert')
                         @csrf
                         @method('PUT')
                             <div class="form-group">
                               <label for="exampleInputEmail1">Nama Lokasi</label>
-                              <input value="{{ $all_artikel['nama'] }}" name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Judul">
+                              <input value="{{ $all_peta['nama'] }}" name="nama" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Judul">
                             </div>
                             <div class="form-group">
                               <label for="exampleInputPassword1">Koordinat Lokasi</label>
-                              <input value="{{ $all_artikel['koordinat'] }}" name="author" type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukkan penulis">
+                              <input value="{{ $all_peta['koordinat'] }}" name="koordinat" type="text" class="form-control" id="exampleInputPassword1" placeholder="Masukkan penulis">
                             </div>
                             <br>
                             <button type="submit" class="btn btn-primary">Submit</button>

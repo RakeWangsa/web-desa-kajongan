@@ -59,7 +59,44 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="row mt-3">
-                <h4>Kelola Peta</h4>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <h4>Kelola Peta</h4>
+                    </div>
+                    <div class="col-lg-3">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahLokasi">Tambah Lokasi</button>
+
+                   <!-- Modal -->
+<div class="modal fade" id="tambahLokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Lokasi</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/addMap" method="POST" enctype="multipart/form-data">
+                @csrf
+            <div class="modal-body">
+                <div class="mb-4">
+                    <label for="namaLokasi" class="form-label">Nama Lokasi</label>
+                    <input type="text" class="form-control" name="nama" id="namaLokasi" placeholder="Nama Lokasi">
+                </div>
+                <div>
+                    <label for="koordinatLokasi" class="form-label">Koordinat Lokasi</label>
+                    <input type="text" class="form-control" name="koordinat" id="koordinatLokasi" placeholder="Koordinat Lokasi">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+                    </div>
+                </div>
+                
                 <div class="col-lg-10 mt-2">
                     <table class="table table-hover">
                         <thead>

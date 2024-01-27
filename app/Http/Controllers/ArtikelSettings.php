@@ -86,9 +86,36 @@ class ArtikelSettings extends Controller
     }
 
     public function editMap($id){
-        $all_artikel = Peta::where('id',$id)->first();
+        $all_peta = Peta::where('id',$id)->first();
         return view("editMap",[
-            "all_artikel" => $all_artikel
+            "all_peta" => $all_peta
         ]);
+    }
+    
+    public function editMapSubmit(Request $request,$id){
+        // return dd($request->all());
+        $artikel = Peta::where('id',$id)->first();
+        $input_data = $request->all();
+        $artikel["nama"] = $input_data["nama"];
+        $artikel["koordinat"] = $input_data["koordinat"];
+
+        $artikel->save();
+        alert()->success('Berhasil diedit','Peta Berhasil diedit');
+        return redirect('/kelolapeta');
+    }
+
+    public function deleteMap($id){
+        Peta::where('id', $id)->delete();
+        alert()->success('Berhasil Dihapus','Peta Berhasil dihapus');
+        return redirect('/kelolapeta');
+    }
+
+    public function addMap(Request $request){
+        Peta::create([
+            'nama' => $request->nama,
+            'koordinat' => $request->koordinat,
+        ]);
+        alert()->success('Berhasil Ditambahkan','Peta Berhasil ditambahkan');
+        return redirect('/kelolapeta');
     }
 }

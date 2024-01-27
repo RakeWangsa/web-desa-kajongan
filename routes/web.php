@@ -38,7 +38,10 @@ Route::get("/olahartikel",[ArtikelSettings::class, 'olahArtikel'])->middleware('
 Route::get("/kelolapeta",[ArtikelSettings::class, 'kelolaPeta'])->middleware('auth');
 Route::get("/showEditArt/{id}",[ArtikelSettings::class, 'showEditArt'])->middleware('auth');
 Route::put("/editArtikel/{id}",[ArtikelSettings::class, 'editArtikel'])->middleware('auth');
+Route::post("/addMap",[ArtikelSettings::class, 'addMap'])->middleware('auth');
 Route::get("/editMap/{id}",[ArtikelSettings::class, 'editMap'])->middleware('auth');
+Route::put("/editMapSubmit/{id}",[ArtikelSettings::class, 'editMapSubmit'])->middleware('auth');
+Route::post("/deleteMap/{id}",[ArtikelSettings::class, 'deleteMap'])->middleware('auth');
 
 Route::get("/help",function(){
     return view("help");
