@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\artikel;
+use App\Models\Peta;
 use Nette\Utils\DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class ArtikelSettings extends Controller
 {
@@ -74,5 +76,12 @@ class ArtikelSettings extends Controller
         $artikel->save();
         alert()->success('Berhasil diedit','Artikel Berhasil diedit');
         return back();
+    }
+
+    public function kelolaPeta(){
+        $allData = Peta::paginate(10);
+        return view("kelolaPeta",[
+            "allData" => $allData
+        ]);
     }
 }

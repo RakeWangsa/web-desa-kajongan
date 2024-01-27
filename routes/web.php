@@ -35,6 +35,7 @@ Route::post("/deleteArtikel/{id}",[ArtikelSettings::class, 'deleteArticle'])->mi
 Route::post("/addartikels",[ArtikelSettings::class, 'postArticle'])->middleware('auth');
 Route::get("/addartikel",[ArtikelSettings::class, 'addArtikel'])->middleware('auth');
 Route::get("/olahartikel",[ArtikelSettings::class, 'olahArtikel'])->middleware('auth');
+Route::get("/kelolapeta",[ArtikelSettings::class, 'kelolaPeta'])->middleware('auth');
 Route::get("/showEditArt/{id}",[ArtikelSettings::class, 'showEditArt'])->middleware('auth');
 Route::put("/editArtikel/{id}",[ArtikelSettings::class, 'editArtikel'])->middleware('auth');
 

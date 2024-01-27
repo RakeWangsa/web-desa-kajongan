@@ -11,6 +11,7 @@ use App\Models\KaurKeungan;
 use App\Models\KaurUmum;
 use App\Models\KepalaDesa;
 use App\Models\SekreDesa;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -26,6 +27,11 @@ class MainController extends Controller
         $kadusKemloko = KadusKemloko::orderBy('id', 'desc')->first();
         $kadusKrajen = KadusKrajen::orderBy('id', 'desc')->first();
         $kadusGembogan = KadusGembongan::orderBy('id', 'desc')->first();
+// Mendapatkan data dari database
+$peta = DB::table('peta')->select('*')->get();
+
+// Mengonversi data dari objek koleksi ke dalam array
+$petaArray = $peta->toArray();
 
         return view("welcome",[
             "kades_name" => $kades->name,
@@ -53,7 +59,9 @@ class MainController extends Controller
             "photo_kadusKrajen" => $kadusKrajen->photo_url,
 
             "kadusGembongan_name" => $kadusGembogan->name,
-            "photo_kadusGembongan" => $kadusGembogan->photo_url
+            "photo_kadusGembongan" => $kadusGembogan->photo_url,
+
+            "petaArray"=>$petaArray
         ]);
     }
 }

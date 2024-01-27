@@ -506,15 +506,12 @@
             var latitude = -7.051878493315458;
             var longitude = 109.58420467535026;
     
-            // Tambahkan peta Leaflet
             var map = L.map('map').setView([latitude, longitude], 15);
     
-            // Tambahkan layer peta dari OpenStreetMap
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '© OpenStreetMap contributors'
             }).addTo(map);
     
-            // Membuat ikon kustom merah
             var redIcon = new L.Icon({
                 iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
                 shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
@@ -524,27 +521,17 @@
                 shadowSize: [41, 41]
             });
     
-            // koordinat kantor
-            var kantorCoords1 = [-7.054084729493203, 109.58489727588355]; //koordinat farmtech
-            var kantorCoords2 = [-7.05683747400653, 109.58692027784949]; //koordinat farmhill
-            var kantorCoords3 = [-7.05783747400653, 109.59692027784949]; //koordinat tes
-    
-            // Marker untuk Farmtech
-            var markerFarmtech = L.marker(kantorCoords1, { icon: redIcon }).addTo(map);
-            markerFarmtech.bindPopup('Farmtech', { autoClose: false }).openPopup();
-    
-            // Marker untuk Farmhill
-            var markerFarmhill = L.marker(kantorCoords2, { icon: redIcon }).addTo(map);
-            markerFarmhill.bindPopup('Farmhill', { autoClose: false }).openPopup();
-    
-            // Marker untuk Farmhill
-            var markerTes = L.marker(kantorCoords3, { icon: redIcon }).addTo(map);
-            markerTes.bindPopup('Tes', { autoClose: false }).openPopup();
+            // Loop melalui data peta dan tambahkan marker untuk setiap koordinat
+            @foreach($petaArray as $peta)
+                var kantorCoords{{ $peta->id }} = [{{ $peta->koordinat }}];
+                var marker{{ $peta->id }} = L.marker(kantorCoords{{ $peta->id }}, { icon: redIcon }).addTo(map);
+                marker{{ $peta->id }}.bindPopup('{{ $peta->nama }}', { autoClose: false }).openPopup();
+            @endforeach
         }
     
-        // Panggil fungsi saat halaman dimuat
         window.onload = tampilkanPosisi;
     </script>
+    
     
     
     

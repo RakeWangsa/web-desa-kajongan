@@ -20,6 +20,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link {{ Request::is('kelolapeta*') ? 'active' : '' }}" href="/kelolapeta">
+            <span data-feather="map"></span>
+            Kelola Peta
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link {{ Request::is('help*') ? 'active' : '' }}" href="/help">
             <span data-feather="help-circle"></span>
             Bantuan
